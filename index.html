@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LGS 2025 Geri Sayım</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b') no-repeat center center/cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-shadow: 1px 1px 3px #000;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 0.5rem;
+    }
+    #countdown {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    #quote {
+      font-size: 1.2rem;
+      font-style: italic;
+      margin-top: 20px;
+      max-width: 90%;
+    }
+    .highlight {
+      font-weight: bold;
+      color: #ffea00;
+    }
+    .video-links {
+      margin-top: 30px;
+      font-size: 1.1rem;
+    }
+    .video-links a {
+      display: block;
+      margin: 10px 0;
+      color: #ffea00;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>⏳ LGS 2025 Geri Sayım</h1>
+  <div id="countdown">Yükleniyor...</div>
+  <div id="quote">Günün motivasyon sözü yükleniyor...</div>
+
+  <div class="video-links">
+    <h2>📚 Konu Anlatımlı Videolar</h2>
+    <h3>Matematik</h3>
+    <a href="https://youtube.com/playlist?list=PLtahc0zyGyt6Mf3JpSn29SxMoYEfwXPU0&si=UmX4clLnil0AzKgj" target="_blank">Matematik Konu Anlatımları</a>
+    <h3>Türkçe</h3>
+    <a href="https://youtube.com/playlist?list=PLH202Am-t4LIifMr9lnD6bxUcOyaKF0m6&si=q5fIIR2h4ntjVYEG" target="_blank">Türkçe Konu Anlatımları</a>
+    <h3>Fen Bilimleri</h3>
+    <a href="https://youtube.com/playlist?list=PLsxOAgVWSKNBzahhsDUmsMTlRzL4Llbgt&si=PMb4EszkMqfW2D_d" target="_blank">Fen Bilimleri Konu Anlatımları</a>
+  </div>
+
+<div class="dates">
+    <h2>📅 LGS Önemli Tarihler</h2>
+    <ul>
+      <li><strong>Başvuru Tarihi:</strong> 2 – 16 Nisan 2025</li>
+      <li><strong>Sınav Tarihi:</strong> 15 Haziran 2025</li>
+      <li><strong>Sonuç Açıklama Tarihi:</strong> 11 Temmuz 2025</li>
+    </ul>
+  </div>
+
+  <script>
+    // --- Geri Sayım ---
+    const countdownElement = document.getElementById("countdown");
+    const quoteElement = document.getElementById("quote");
+
+    const lgsDate = new Date("2025-06-15T09:30:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = lgsDate - now;
+
+      if (distance < 0) {
+        countdownElement.innerHTML = "Sınav başladı! Başarılar dilerim! 🎯";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdownElement.innerHTML = `
+        <span class="highlight">${days}</span> gün 
+        <span class="highlight">${hours}</span> saat 
+        <span class="highlight">${minutes}</span> dakika 
+        <span class="highlight">${seconds}</span> saniye kaldı!
+      `;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // --- Motivasyon Sözleri ---
+    const quotes = {
+      0: "Bugün yapacağın bir net, seni hayaline bir adım daha yaklaştırır. 💪",
+      1: "Zor zamanlar geçici, gurur sonsuz. Devam! 🔥",
+      2: "Her çözüm, bir adım. Her adım, bir başarı. 🚶‍♀️",
+      3: "Başarılı olmak istiyorsan önce inancını güçlendir. ✨",
+      4: "Çalış, ter dök, sonra gülümseyerek sınavdan çık. 😌",
+      5: "Hayal ettiğin lise, seni bekliyor. Vazgeçme! 🎯",
+      6: "Bugün de geçtiğinde, bir gün daha yaklaşmış olacaksın. ⏳"
+    };
+
+    const today = new Date().getDay(); // 0 = Pazar, 6 = Cumartesi
+    quoteElement.innerText = quotes[today];
+  </script>
+</body>
+</html>
